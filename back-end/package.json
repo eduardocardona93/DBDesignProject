@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/eduardocardona93/DBDesignProject/issues"
   },
-  "homepage": "https://github.com/eduardocardona93/DBDesignProject#readme"
+  "homepage": "https://github.com/eduardocardona93/DBDesignProject#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

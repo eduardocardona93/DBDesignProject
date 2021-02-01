@@ -134,8 +134,8 @@ async function updateSalesPerson(salesPersonData,salesPersonId){
 async function deleteSalesPerson(salesPersonId){
     try {
         let pool =  await sql.connect(config);
-        let insertPool = await pool.request()
-        .query("DELETE FROM [DB_A6E8BF_eddiesri].[dbo].[SALES_PERSON] WHERE SP_UID='"+ salesPersonId + "'");
+        let insertPool = await pool.request().query("DELETE FROM [DB_A6E8BF_eddiesri].[dbo].[CLIENTS] WHERE SP_UID='"+ salesPersonId + "'");
+        let insertPool = await pool.request().query("DELETE FROM [DB_A6E8BF_eddiesri].[dbo].[SALES_PERSON] WHERE SP_UID='"+ salesPersonId + "'");
 
         return insertPool;
     } catch (error) {

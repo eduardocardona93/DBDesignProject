@@ -35,14 +35,12 @@ app.get(api + '/clients/:clientId', (req, res) => {
         res.json(result);
     })
 })
-
 app.post(api + '/clients', (req, res) => {
     var ClientData = {...req.body}
     dbOperations.createClients(ClientData).then(result => {
         res.json(result);
     })
 })
-
 app.post(api + '/clients/:clientId', (req, res) => {
     var clientId = req.params.clientId;
     var ClientData = {...req.body};
@@ -50,9 +48,46 @@ app.post(api + '/clients/:clientId', (req, res) => {
         res.json(result);
     })
 })
-
 app.delete(api + '/clients/:clientId', (req, res) => {
     dbOperations.deleteClients(req.params.clientId).then(result => {
+        res.send(result);
+    })
+})
+
+
+app.get(api + '/salesPerson', (req, res) => {
+    dbOperations.getAllSalesPersons().then(result => {
+        res.send(result);
+    })
+})
+app.get(api + '/salesPerson/:salesPersonId', (req, res) => {
+    var salesPersonId = req.params.salesPersonId;
+    dbOperations.getOneSalesPerson(salesPersonId).then(result => {
+        res.json(result);
+    });
+})
+app.get(api + '/salesPerson/login', (req, res) => {
+    var email = req.header.email;
+    var password = req.header.password;
+    dbOperations.getUserSalesPerson(email,password).then(result => {
+        res.json(result);
+    })
+})
+app.post(api + '/salesPerson', (req, res) => {
+    var SalesPersonData = {...req.body}
+    dbOperations.createSalesPerson(SalesPersonData).then(result => {
+        res.json(result);
+    })
+})
+app.post(api + '/salesPerson/:salesPersonId', (req, res) => {
+    var salesPersonId = req.params.salesPersonId;
+    var SalesPersonData = {...req.body};
+    dbOperations.updateSalesPerson(SalesPersonData,salesPersonId).then(result => {
+        res.json(result);
+    })
+})
+app.delete(api + '/salesPerson/:salesPersonId', (req, res) => {
+    dbOperations.deleteSalesPerson(req.params.salesPersonId).then(result => {
         res.send(result);
     })
 })

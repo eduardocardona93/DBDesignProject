@@ -23,41 +23,36 @@ app.use(express.json());
 
 var api = "/api/v1";
 
-app.get(api + '/test', (req, res) => {
-    // requests.testRequest(req, res);
-    dbOperations.getAllPruebas().then(result => {
+app.get(api + '/clients', (req, res) => {
+    dbOperations.getAllClients().then(result => {
         res.send(result);
     })
 })
-app.get(api + '/test/:custId', (req, res) => {
+app.get(api + '/clients/:clientId', (req, res) => {
 
-    var custId = req.params.custId;
-    dbOperations.getOnePrueba(custId).then(result => {
+    var clientId = req.params.clientId;
+    dbOperations.getOneClient(clientId).then(result => {
         res.json(result);
     })
 })
 
-app.post(api + '/test', (req, res) => {
-
-    var Prueba = {...req.body}
-    dbOperations.createPruebas(Prueba).then(result => {
+app.post(api + '/clients', (req, res) => {
+    var ClientData = {...req.body}
+    dbOperations.createClients(ClientData).then(result => {
         res.json(result);
     })
 })
 
-app.post(api + '/test/:custId', (req, res) => {
-
-    var custId = req.params.custId;
-    var Prueba = {...req.body};
-    dbOperations.updatePruebas(Prueba,custId).then(result => {
+app.post(api + '/clients/:clientId', (req, res) => {
+    var clientId = req.params.clientId;
+    var ClientData = {...req.body};
+    dbOperations.updateClients(ClientData,clientId).then(result => {
         res.json(result);
     })
 })
 
-app.delete(api + '/test/:custId', (req, res) => {
-
-    
-    dbOperations.deletePruebas(req.params.custId).then(result => {
+app.delete(api + '/clients/:clientId', (req, res) => {
+    dbOperations.deleteClients(req.params.clientId).then(result => {
         res.send(result);
     })
 })

@@ -1,0 +1,46 @@
+<?x ml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment"
+    tools:ignore="UnusedNavigation">
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.adworkshop.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.adworkshop.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.adworkshop.dashboard.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_addClientFragment"
+            app:destination="@id/addClientFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_clientsListingFragment"
+            app:destination="@id/clientsListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientsListingFragment"
+        android:name="com.adworkshop.clients.ClientsListingFragment"
+        android:label="ClientsListingFragment" />
+    <fragment
+        android:id="@+id/addClientFragment"
+        android:name="com.adworkshop.addclient.AddClientFragment"
+        android:label="AddClientFragment" />
+
+</navigation>

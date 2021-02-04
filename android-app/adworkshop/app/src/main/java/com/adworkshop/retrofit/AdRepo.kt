@@ -91,6 +91,29 @@ class AdRepo {
         }))
         return apiResponse
     }
+    fun updateClient(createClientRequestModel: CreateClientRequestModel): MutableLiveData<Any> {
+        val apiResponse = MutableLiveData<Any>()
+        val call = RetrofitServices.createService(APIServices::class.java)
+            .updateClient(API_Constants.CLIENT_DATA.cLIENT_UID,createClientRequestModel)
+        call.enqueue(RestProcess(object :
+            RestCallback<ServiceMessageResponse> {
+            override fun onFailure(call: Call<ServiceMessageResponse>, t: Throwable) {
+            }
+
+            override fun onError(error: String) {
+                apiResponse.value = error
+            }
+
+            override fun onSuccess(
+                call: Call<ServiceMessageResponse>,
+                response: ServiceMessageResponse?
+            ) {
+                apiResponse.value = response
+            }
+
+        }))
+        return apiResponse
+    }
 fun listClients(clientListingRequestModel: ClientListingRequestModel): MutableLiveData<Any> {
         val apiResponse = MutableLiveData<Any>()
         val call = RetrofitServices.createService(APIServices::class.java)

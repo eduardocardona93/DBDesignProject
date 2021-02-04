@@ -31,7 +31,10 @@ class AdViewModel {
     fun createClient(createClientRequestModel: CreateClientRequestModel): MutableLiveData<Any> {
         return adRepo!!.createClient(createClientRequestModel)
     }
-
+    //Update existing Client Request Method
+    fun updateClient(createClientRequestModel: CreateClientRequestModel): MutableLiveData<Any> {
+        return adRepo!!.updateClient(createClientRequestModel)
+    }
     //List Clients for logged in Sales Managers Request Method
     fun clientListing(clientListingRequestModel: ClientListingRequestModel): MutableLiveData<Any> {
         return adRepo!!.listClients(clientListingRequestModel)

@@ -31,5 +31,11 @@ public interface APIServices {
     @HTTP(method = "DELETE", path = API_Constants.DELETE_CLIENT + "/{id}", hasBody = false)
     fun deleteClient(@Path("id") userId: Int): Call<ServiceMessageResponse>
 
+    @HTTP(method = "POST", path = API_Constants.CREATE_CLIENT + "{id}", hasBody = true)
+    fun updateClient(
+        @Path("id") userId: Int,
+        @Body createClientRequestModel: CreateClientRequestModel
+    ): Call<ServiceMessageResponse>
+
 
 }

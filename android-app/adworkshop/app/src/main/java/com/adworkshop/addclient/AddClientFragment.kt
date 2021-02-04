@@ -54,7 +54,11 @@ class AddClientFragment : Fragment() {
 
         /* Click Listeners*/
         add.setOnClickListener {
-            hitAddClientAPI()
+            if(API_Constants.EDIT_CLIENT){
+                hitUpdateClientAPI()
+            }else {
+                hitAddClientAPI()
+            }
         }
         back.setOnClickListener {
             Navigation.findNavController(requireView())
@@ -84,6 +88,38 @@ class AddClientFragment : Fragment() {
             }
 
             AdViewModel().createClient(
+                CreateClientRequestModel(
+                    client_name.text.toString(),
+                    client_type.text.toString(),
+                    company_code.text.toString().toLong(),
+                    phone_number.text.toString().toLong(),
+                    email.text.toString(),
+                    API_Constants.USER_DATA.sP_UID
+
+                )
+            ).observe(viewLifecycleOwner, viewStateObserver)
+        }
+    }
+    private fun hitUpdateClientAPI() {
+        if (validateFields()) {
+            loading.visibility = View.VISIBLE
+
+
+            val viewStateObserver = Observer<Any> { viewState ->
+                loading.visibility = View.GONE
+
+                if (viewState is ServiceMessageResponse) {
+                    CommonUtils.showToast(requireActivity(), viewState.message)
+
+                    Navigation.findNavController(requireView())
+                        .popBackStack(R.id.addClientFragment, true)
+                } else {
+                    CommonUtils.showSnackbar(requireView(), getString(R.string.went_wrong))
+                }
+
+            }
+
+            AdViewModel().updateClient(
                 CreateClientRequestModel(
                     client_name.text.toString(),
                     client_type.text.toString(),

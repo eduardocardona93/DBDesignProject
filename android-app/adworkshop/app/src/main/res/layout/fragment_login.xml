@@ -11,6 +11,23 @@
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
     tools:context=".login.LoginFragment">
+
+    <TextView
+        android:id="@+id/back"
+        style="@style/BoldBlackTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/blue_back"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:text="@string/back"
+        android:textColor="@color/back_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 <LinearLayout
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
@@ -29,7 +46,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/email_address" />
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
      android:layout_marginTop="10dp"

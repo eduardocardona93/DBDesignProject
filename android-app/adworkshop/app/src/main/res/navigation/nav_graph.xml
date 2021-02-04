@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -31,16 +34,38 @@
             android:id="@+id/action_dashboardFragment_to_addClientFragment"
             app:destination="@id/addClientFragment" />
         <action
+            android:id="@+id/action_dashboardFragment_to_projectListingFragment"
+            app:destination="@id/projectListingFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addProjectFragment"
+            app:destination="@id/addProjectFragment" />
+        <action
             android:id="@+id/action_dashboardFragment_to_clientsListingFragment"
             app:destination="@id/clientsListingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/clientsListingFragment"
-        android:name="com.adworkshop.clients.ClientsListingFragment"
-        android:label="ClientsListingFragment" />
-    <fragment
         android:id="@+id/addClientFragment"
         android:name="com.adworkshop.addclient.AddClientFragment"
         android:label="AddClientFragment" />
+    <fragment
+        android:id="@+id/projectListingFragment"
+        android:name="com.adworkshop.projects.ProjectListingFragment"
+        android:label="ProjectListingFragment" />
+    <fragment
+        android:id="@+id/addProjectFragment"
+        android:name="com.adworkshop.addproject.AddProjectFragment"
+        android:label="AddProjectFragment" />
+    <fragment
+        android:id="@+id/clientsListingFragment"
+        android:name="com.adworkshop.clients.ClientsListingFragment"
+        android:label="ClientsListingFragment" >
+        <action
+            android:id="@+id/action_clientsListingFragment_to_addClientFragment"
+            app:destination="@id/addClientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.adworkshop.signup.SignUpFragment"
+        android:label="SignUpFragment" />
 
 </navigation>

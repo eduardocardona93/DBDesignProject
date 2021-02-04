@@ -62,12 +62,12 @@
             android:text="User" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/username"
             style="@style/BlackTextView_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:text="Ranjana" />
+            android:text="" />
 
         <TextView
             android:id="@+id/textView4"

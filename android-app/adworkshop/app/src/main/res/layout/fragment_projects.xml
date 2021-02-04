@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
     android:layout_height="match_parent"
-    >
+    android:background="@android:color/white">
 
 
-
+    <!--  <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textColor="@android:color/black"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_ios_24"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
     <EditText
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="15dp"
-        android:hint="Enter client name "
-       android:drawableRight="@drawable/search"
-        android:padding="12dp"
-        android:visibility="gone"
+        android:layout_marginTop="20dp"
         android:background="@drawable/black_stroke_bg"
+        android:drawableRight="@drawable/search"
+        android:hint="Enter Client name to see projects"
         android:inputType="textEmailAddress"
+        android:padding="12dp"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintVertical_bias="0.0" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcClients"
+        android:id="@+id/rcProjects"
         android:name="com.adworkshop.ItemFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -45,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search"
         app:layout_constraintVertical_bias="0.0"
         tools:context=".dashboard.DashboardFragment"
-        tools:listitem="@layout/fragment_item_client_list" />
+        tools:listitem="@layout/fragment_item_project" />
 
     <TextView
         android:id="@+id/back"
@@ -70,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
-        android:text="@string/our_clients"
+        android:text="@string/our_projects"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,17 +87,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:layout_marginBottom="64dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

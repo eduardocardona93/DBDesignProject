@@ -33,7 +33,7 @@ val recyAdapCallBack: RecyAdapCallBack<SideMenuViewHolder>
                  holder.binding.listRow,
                  position,
                  0,
-                 listMenu[position].icon
+                 listMenu[position].name
              )
          }
 

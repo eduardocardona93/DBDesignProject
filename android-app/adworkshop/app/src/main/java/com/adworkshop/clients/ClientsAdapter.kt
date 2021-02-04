@@ -1,5 +1,6 @@
 package com.adworkshop.clients
 
+import ClientData
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -7,13 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.adworkshop.R
 import com.adworkshop.callbacks.RecyAdapCallBack
-import com.adworkshop.databinding.FragmentItemClientBinding
-import com.adworkshop.databinding.FragmentItemDashboardBinding
+import com.adworkshop.databinding.FragmentItemClientListBinding
 
 
 class ClientsAdapter(
     val activity: Activity,
-
+    val clientListing: ArrayList<ClientData>,
     val recyAdapCallBack: RecyAdapCallBack<DashboardViewHolder>
 ) :
     RecyclerView.Adapter<ClientsAdapter.DashboardViewHolder>() {
@@ -22,32 +22,41 @@ class ClientsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
         val view =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_item_client, parent, false)
+                .inflate(R.layout.fragment_item_client_list, parent, false)
         return DashboardViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
-        /* holder.binding.menuName.text = listMenu[position].name
-         holder.binding.icon.setImageResource(listMenu[position].icon)
-          holder.binding.listRow.setOnClickListener {
-              recyAdapCallBack.onItemClick(
-                  holder.binding.listRow,
-                  position,
-                  0,
-                  listMenu[position].icon
-              )
-          }*/
+        holder.binding.clientName.text = clientListing[position].cLIENT_NAME
+        holder.binding.clientPhoneNo.text = clientListing[position].cONTACT_NUMBER.toString()
+        holder.binding.clientEmail.text = clientListing[position].eMAIL
+        holder.binding.clientDelete.setOnClickListener {
+            recyAdapCallBack.onItemClick(
+                holder.binding.listRow,
+                position,
+                0,
+                clientListing[position]
+            )
+        }
+    holder.binding.clientEdit.setOnClickListener {
+            recyAdapCallBack.onItemClick(
+                holder.binding.listRow,
+                position,
+                1,
+                clientListing[position]
+            )
+        }
 
     }
 
-    override fun getItemCount() = 20
+    override fun getItemCount() = clientListing.size
 
     class DashboardViewHolder(
         itemView: View?
     ) : RecyclerView.ViewHolder(itemView!!) {
 
-        val binding: FragmentItemClientBinding
-            get() = FragmentItemClientBinding.bind(itemView)
+        val binding: FragmentItemClientListBinding
+            get() = FragmentItemClientListBinding.bind(itemView)
     }
 
 }

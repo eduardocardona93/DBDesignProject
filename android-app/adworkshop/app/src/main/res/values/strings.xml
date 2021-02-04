@@ -18,4 +18,25 @@
     <string name="back">Back</string>
     <string name="our_projects">Our Projects</string>
     <string name="add">Add</string>
+    <string name="add_project">Add Project</string>
+    <string name="project_list">"Projects "</string>
+    <string name="our_clients">Our Clients</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="err_blank_full_name">Full Name should not be blank</string>
+    <string name="err_email_blank">Email should not be blank</string>
+    <string name="err_valid_email">Enter valid Email</string>
+    <string name="err_mobile_blank">Phone Number should not be blank</string>
+    <string name="err_password">Password should not be blank</string>
+    <string name="went_wrong">Somthing went wrong</string>
+    <string name="client_name">Client Name</string>
+    <string name="client_type">Client Type</string>
+    <string name="company_code">Company Code</string>
+    <string name="login">SignIn</string>
+    <string name="edit">Edit</string>
+    <string name="err_client_name_blank">Client Name should not be blank</string>
+    <string name="err_client_type_blank">Client type should not be blank</string>
+    <string name="err_company_code">Company Code should not be blank</string>
+    <string name="edit_client_info">Edit Client Info</string>
 </resources>

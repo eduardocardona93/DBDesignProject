@@ -21,81 +21,71 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
+// url for the api
 var api = "/api/v1";
 
-app.get(api + '/clients', (req, res) => {
-    dbOperations.getAllClients().then(result => {
-        res.send(result);
-    })
-})
+/** urls for funcions rediceting to dbOperations **/
+
+//******************* Clients Resources *************************/
+// gets specific client information
 app.get(api + '/clients/:clientId', (req, res) => {
-
-    var clientId = req.params.clientId;
-    dbOperations.getOneClient(clientId).then(result => {
-        res.json(result);
-    })
+    dbOperations.getOneClient(req, res);
 })
+// creating a client
 app.post(api + '/clients', (req, res) => {
-    var ClientData = {...req.body}
-    dbOperations.createClients(ClientData).then(result => {
-        res.json(result);
-    })
+    dbOperations.createClients(req, res);
 })
+// updating an existing client
 app.post(api + '/clients/:clientId', (req, res) => {
-    var clientId = req.params.clientId;
-    var ClientData = {...req.body};
-    dbOperations.updateClients(ClientData,clientId).then(result => {
-        res.json(result);
-    })
+    dbOperations.updateClients(req, res);
 })
+// deleting an existing client
 app.delete(api + '/clients/:clientId', (req, res) => {
-    dbOperations.deleteClients(req.params.clientId).then(result => {
-        res.send(result);
-    })
+    dbOperations.deleteClients(req, res);
 })
 
+//******************* Sales person Resources *************************/
 
+// gets all the sales person registers
 app.get(api + '/salesPerson', (req, res) => {
-    dbOperations.getAllSalesPersons().then(result => {
-        res.send(result);
-    })
-})
-app.get(api + '/salesPerson/:salesPersonId', (req, res) => {
-    var salesPersonId = req.params.salesPersonId;
-    dbOperations.getOneSalesPerson(salesPersonId).then(result => {
-        res.json(result);
-    });
-})
-app.get(api + '/salesPerson/login', (req, res) => {
-    var email = req.header.email;
-    var password = req.header.password;
-    dbOperations.getUserSalesPerson(email,password).then(result => {
-        res.json(result);
-    })
-})
-app.post(api + '/salesPerson', (req, res) => {
-    var SalesPersonData = {...req.body}
-    dbOperations.createSalesPerson(SalesPersonData).then(result => {
-        res.json(result);
-    })
-})
-app.post(api + '/salesPerson/:salesPersonId', (req, res) => {
-    var salesPersonId = req.params.salesPersonId;
-    var SalesPersonData = {...req.body};
-    dbOperations.updateSalesPerson(SalesPersonData,salesPersonId).then(result => {
-        res.json(result);
-    })
-})
-app.delete(api + '/salesPerson/:salesPersonId', (req, res) => {
-    dbOperations.deleteSalesPerson(req.params.salesPersonId).then(result => {
-        res.send(result);
-    })
+    dbOperations.getAllSalesPersons(req, res);
 })
 
+
+// gets an specific sales person information
+app.get(api + '/salesPerson/:salesPersonId', (req, res) => {
+    dbOperations.getOneSalesPerson(req, res);
+})  
+
+// gets all clients from a sales person
+app.get(api + '/salesPerson_clients/:salesPersonId', (req, res) => {
+    dbOperations.getAllSalesPersonClients(req, res);
+})  
+
+// gets the user data if has the valid credentials (email, password)
+app.post(api + '/login', (req, res) => {
+    dbOperations.getUserSalesPerson(req, res);
+})
+
+// creates a new sales person
+app.post(api + '/salesPerson', (req, res) => {
+    dbOperations.createSalesPerson(req, res);
+})
+
+// updates the sales person data
+app.post(api + '/salesPerson/:salesPersonId', (req, res) => {
+
+    dbOperations.updateSalesPerson(req, res);
+})
+//deletes the sales person
+app.delete(api + '/salesPerson/:salesPersonId', (req, res) => {
+    dbOperations.deleteSalesPerson(req, res);
+})
+// redirect in case of not found
 app.get('/*', function(req, res) {
     requestsHandler.testRequest(req, res);
 });
-
+//start service
 app.listen(port, () => {
     console.log('Server Running: ' + port)
 })
